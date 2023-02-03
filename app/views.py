@@ -1,10 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 from .models import Dirigeant, Magasin, Meuble
 from .serializers import SerializerDirigeant, SerializerMagasin, SerializerMeuble
+from rest_framework.permissions import IsAuthenticated
 
 
 class DirigeantViewSet(ModelViewSet):
     serializer_class = SerializerDirigeant
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
 
