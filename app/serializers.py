@@ -1,21 +1,32 @@
 from rest_framework import serializers
-from app.models import Dirigeant, Magasin, Meuble
+from .models import Realisateur, Scenario, Film, Acteur, Jouer
 
 
-class SerializerDirigeant(serializers.ModelSerializer):
+class RealisateurSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Dirigeant
-        fields = ['nom', 'prenom']
+        model = Realisateur
+        fields = ['id', 'nom', 'prenom', 'age', 'pays']
 
 
-class SerializerMagasin(serializers.ModelSerializer):
+class ScenarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Magasin
-        fields = ['nom', 'adresse','dirigeant','ca']
+        model = Scenario
+        fields = ['id', 'titre', 'description']
 
 
-class SerializerMeuble(serializers.ModelSerializer):
+class FilmSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Meuble
-        fields = ['nom', 'etat','magasin','prix','statut']
+        model = Film
+        fields = ['id', 'id_realisateur', 'id_scenario', 'titre', 'description', 'duree_minutes', 'genre']
 
+
+class ActeurSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Acteur
+        fields = ['id', 'nom', 'prenom', 'age']
+
+
+class JouerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Jouer
+        fields = ['id_film', 'id_acteur']

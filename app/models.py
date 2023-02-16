@@ -1,39 +1,33 @@
 from django.db import models
 
 
-class Dirigeant(models.Model):
-    nom = models.CharField(max_length=100)
-    prenom = models.CharField(max_length=100)
+class Realisateur(models.Model):
+    nom = models.CharField(max_length=255, null=False)
+    prenom = models.CharField(max_length=255, null=False)
+    age = models.IntegerField()
+    pays = models.CharField(max_length=255)
 
 
-class Magasin(models.Model):
-    nom = models.CharField(max_length=100)
-    adresse = models.CharField(max_length=200)
-    dirigeant = models.ForeignKey(Dirigeant, on_delete=models.CASCADE)
-    ca = models.DecimalField(max_digits=10, decimal_places=2)
+class Scenario(models.Model):
+    titre = models.CharField(max_length=255, null=False)
+    description = models.CharField(max_length=255, null=False)
 
 
-class Meuble(models.Model):
-    NEUF = 'NEUF'
-    OCCASION = 'OCCASION'
-    MAUVAIS_ETAT = 'MAUVAIS ETAT'
-    INUTILISABLE = 'INUTILISABLE'
-    ETAT_CHOICES = [
-        (NEUF, 'Neuf'),
-        (OCCASION, 'Occasion'),
-        (MAUVAIS_ETAT, 'Mauvais Etat'),
-        (INUTILISABLE, 'Inutilisable'),
-    ]
+class Film(models.Model):
+    id_realisateur = models.ForeignKey(Realisateur, on_delete=models.CASCADE, null=False)
+    id_scenario = models.ForeignKey(Scenario, on_delete=models.CASCADE, null=False)
+    titre = models.CharField(max_length=255, null=False)
+    description = models.TextField()
+    duree_minutes = models.IntegerField()
+    genre = models.CharField(max_length=255)
 
-    LIBRE = 'LIBRE'
-    VENDU = 'VENDU'
-    STATUT_CHOICES = [
-        (LIBRE, 'Libre'),
-        (VENDU, 'Vendu'),
-    ]
 
-    nom = models.CharField(max_length=100)
-    etat = models.CharField(max_length=100, choices=ETAT_CHOICES, default=NEUF)
-    magasin = models.ForeignKey(Magasin, on_delete=models.CASCADE)
-    prix = models.DecimalField(max_digits=10, decimal_places=2)
-    statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default=LIBRE)
+class Acteur(models.Model):
+    nom = models.CharField(max_length=255, null=False)
+    prenom = models.CharField(max_length=255, null=False)
+    age = models.IntegerField()
+
+
+class Jouer(models.Model):
+    id_film = models.ForeignKey(Film, on_delete=models.CASCADE, null=False)
+    id_acteur = models.ForeignKey(Acteur, on_delete=models.CASCADE, null=False)

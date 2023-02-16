@@ -12,10 +12,18 @@
 
 - Une fois authentifier, récupérer l'access token
 
-### Utilisation
+### Documentation POSTMAN
+[ Cliquer ici](https://documenter.getpostman.com/view/18685609/2s93CGQFZH)
+### Les routes
+- `http://127.0.0.1:8000/api/realisteur/`
+- `http://127.0.0.1:8000/api/scenario/`
+- `http://127.0.0.1:8000/api/film/`
+- `http://127.0.0.1:8000/api/acteur/`
+- `http://127.0.0.1:8000/api/jouer/`
 
-- Check urls.py
-- Pour `router.register('meuble', MeubleViewSet, basename='meuble')`
-- Aller sur `http://127.0.0.1:8000/api/meuble/`
 
+### V1
+
+- Requête Ajouter → Réalisateur, Scénario, Film et Acteur
+- Requête Lister → Réalisateur, Scénario, Film et Acteur
 

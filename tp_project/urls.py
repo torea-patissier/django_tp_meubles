@@ -1,4 +1,4 @@
-"""tp_meuble URL Configuration
+"""tp_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from app.views import DirigeantViewSet, MagasinViewSet, MeubleViewSet
+from app.views import RealisateurViewSet, ScenarioViewSet, FilmViewSet, ActeurViewSet, JouerViewSet
 
 router = routers.SimpleRouter()
-router.register('dirigeant', DirigeantViewSet, basename='dirigeant')
-router.register('magasin', MagasinViewSet, basename='magasin')
-router.register('meuble', MeubleViewSet, basename='meuble')
+router.register('realisateur', RealisateurViewSet, basename='realisteur')
+router.register('scenario', ScenarioViewSet, basename='scenario')
+router.register('film', FilmViewSet, basename='film')
+router.register('acteur', ActeurViewSet, basename='acteur')
+router.register('jouer', JouerViewSet, basename='jouer')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
